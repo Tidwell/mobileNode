@@ -21,6 +21,7 @@ var
   , url = require('url')
   //module libraries
   , log = require('logging')
+  , querystring = require('querystring')
   
   //custom objects  
   , httpUtil = require('httpUtil.js')
@@ -65,6 +66,7 @@ var server = http.createServer(function(req, res){
         mime: mime,
         res: res,
         req: req,
+        queryString: querystring.parse(url.parse(req.url).query),
         render: function(viewVars) {
           var renderer = this;
           //try to grab the file

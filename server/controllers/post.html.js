@@ -2,13 +2,13 @@ var request = require('request'),
     jsdom = require('jsdom'),
     sys = require('sys'),
     url = require('url'),
-    log = require('logging'),
-    querystring = require('querystring')
+    log = require('logging')
+    
     
 var cache = {};
   
 exports.init = function(template) {
-  var path = querystring.parse(url.parse(template.req.url).query).postUrl;
+  var path = template.queryString.postUrl;
   var domain = url.parse(path);
   if (domain.hostname != 'aarontidwell.com') {
     template.render({
@@ -25,7 +25,7 @@ exports.init = function(template) {
   request({uri:path}, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var window = jsdom.jsdom(body).createWindow();
-      jsdom.jQueryify(window, '../../client/js/jquery.js', function (window, jquery) {
+      jsdom.jQueryify(window, __dirname + '/../lib/jquery.js', function (window, jquery) {
         // jQuery is now loaded on the jsdom window 
         var contentEls = jquery(jquery('#content div')[0]);
         var content = {

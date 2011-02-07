@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-    <title>Posts - Simple RSS Reader</title> 
+    <title>Flickr Photos</title> 
     <link rel="stylesheet" href="/css/jquery.mobile.css" />
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/js/jquery.mobile.js"></script>
@@ -9,16 +9,19 @@
   <body> 
     <div data-role="page">
       <div data-role="header">
-        <h1>Posts</h1>
+        <h1>Flickr Photos</h1>
         <a href="/" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
         </div><!-- /header -->
       <div data-role="content">
-        {foreach article in articles}
-          <h2>{article.title}</h2>
-          <p>{article.description}</p>
-          <a href="post.html?postUrl={article.link}">Read More</a>
-          <hr />
+        <ul data-role="listview">
+        {foreach photo in photos}
+          <li>
+            <img src="http://farm{photo.farm}.static.flickr.com/{photo.server}/{photo.id}_{photo.secret}.jpg" />
+            <h3><a href="index.html">{photo.title}</a></h3>
+            <p>{photo.description}</p>
+          </li>
         {end}
+        </ul>
       </div><!-- /content -->
       <div data-role="footer">
         <h4>Server Using Node.js</h4>
