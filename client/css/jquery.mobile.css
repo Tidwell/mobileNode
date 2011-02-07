@@ -518,17 +518,18 @@
 	font-weight: bold;
 }
 .ui-body-e {
-	border: 1px solid 		#F7C942;
-	color: 					#333333;
-	text-shadow: 0 1px 0 	#fff;
-	background: 			#faeb9e;
+	border: 1px solid 		#2A2A2A;
+	background: 			red;
+	color: 					black;
+	 text-shadow: 0 1px 0 	#000;
+	font-weight: normal;
 	background-image: -moz-linear-gradient(top, 
-							#fff, 
-							#faeb9e);
+							red, 
+							white);
 	background-image: -webkit-gradient(linear,left top,left bottom,
-		color-stop(0, 		#fff),
-		color-stop(1, 		#faeb9e));
-  	-msfilter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#faeb9e')";
+		color-stop(0, 		red),
+		color-stop(1, 		white));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='red', EndColorStr='white)')";
 }
 .ui-body-e,
 .ui-body-e input,

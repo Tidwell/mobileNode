@@ -11,14 +11,15 @@
       <div data-role="header">
         <h1>The Feed</h1>
         <a href="/" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
-        </div><!-- /header -->
+      </div><!-- /header -->
       <div data-role="content">
-        {foreach article in articles}
-          <h2>{article.title}</h2>
-          <p>{article.description}</p>
-          <a href="post.html?postUrl={article.link}">Read More</a>
-          <hr />
+        <h2>{title}</h2>
+        {body}
+        {if error}
+          <p class="ui-body ui-body-e">{error}</p>
         {end}
+        <p>Written By: {meta.author}</p>
+        <p>Posted: {meta.date}</p>
       </div><!-- /content -->
       <div data-role="footer">
         <h4>Server Using Node.js</h4>

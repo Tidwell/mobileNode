@@ -6,7 +6,7 @@ var  rss = require('node-rss')
 var cache = {};
 
 exports.init = function(template) {
-  var feedUrl = 'http://feeds.feedburner.com/TheMarthaBlog?format=xml';
+  var feedUrl = 'http://aarontidwell.com/wordpress/feed/';
   
   if (cache[feedUrl]) {
     template.render({articles: cache[feedUrl]});

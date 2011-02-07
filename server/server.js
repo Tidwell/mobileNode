@@ -31,7 +31,7 @@ var clientFolderPath = 'client';
 
 //create the http server
 var server = http.createServer(function(req, res){
-	//when we get a HTTP request
+  //when we get a HTTP request
   //get the requested system path
 	var systemPath = httpUtil.getSystemPathFromRequest({
     clientFolderPath: clientFolderPath, 
@@ -41,7 +41,8 @@ var server = http.createServer(function(req, res){
   var encoding = (mime == 'text/html') ? "utf8" : null;
   //see if there is a controller
   var viewVars;
-  var controllerPath = 'controllers'+url.parse(req.url).href+'.js';
+  var controllerPath = 'controllers'+url.parse(req.url).pathname+'.js';
+  //log(controllerPath);
   fs.readFile(controllerPath, "utf8", function(err, data) {
     if (err) {
       //try to grab the file
@@ -63,6 +64,7 @@ var server = http.createServer(function(req, res){
         encoding: encoding,
         mime: mime,
         res: res,
+        req: req,
         render: function(viewVars) {
           var renderer = this;
           //try to grab the file
@@ -77,7 +79,7 @@ var server = http.createServer(function(req, res){
           });
         }
       }
-      var controller = require(url.parse(req.url).href.replace('/','')+'.js');
+      var controller = require(url.parse(req.url).pathname.replace('/','')+'.js');
       controller.init(templateObject);
     }
   });
