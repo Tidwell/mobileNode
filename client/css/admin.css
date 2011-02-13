@@ -1,0 +1,11 @@
+iframe {
+  height: 456px;
+  margin: 176px 0 0 40px;
+  width: 316px;
+  overflow-y: scroll;
+}
+#window {
+  background: url(/images/iphone.png) no-repeat;
+  width: 400px;
+  height: 828px;
+}
